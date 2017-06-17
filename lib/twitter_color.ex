@@ -9,7 +9,7 @@ defmodule TwitterColor do
   def main() do
     # setup()
 
-    createRandomString(24)
+    create_random_string(24)
     |> hash_input
     |> pick_color
     |> IO.inspect()
@@ -25,7 +25,7 @@ defmodule TwitterColor do
   @doc """
   Creates a random string from a specified length. Returns struct.
   """
-  def createRandomString(length) do
+  def create_random_string(length) do
     string = :crypto.strong_rand_bytes(length) |> Base.url_encode64 |> binary_part(0, length)
     %TwitterColor.Image{string: string}
   end
