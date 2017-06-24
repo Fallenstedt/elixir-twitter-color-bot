@@ -12,7 +12,35 @@ defmodule TwitterColor do
     create_random_string(24)
     |> hash_input
     |> pick_color
+    |> create_grid
+    |> build_pixel_map
     |> IO.inspect()
+  end
+
+  @doc """
+  Builds a 300x300 pixel map for three seperate colors.
+  """
+
+  def build_pixel_map(%TwitterColor.Image{ grid: grid } = image) do
+    pixel_map = Enum.map grid, fn({_code, index}) ->
+      horizontal = rem(index, 3) * 100
+      vertical = div(index, 3) * 100
+      top_left = {horizontal, vertical}
+      bottom_right = {horizontal + 100, vertical + 300}
+
+      {top_left, bottom_right}
+    end
+    %TwitterColor.Image{ image | pixel_map: pixel_map}
+  end
+
+  @doc """
+  Accepts an Image Struct as an arguement and returns a grid
+  """
+  def create_grid(image) do
+    grid = [100, 100, 100]
+    |> Enum.with_index
+
+    %TwitterColor.Image{ image | grid: grid}
   end
 
   @doc """
@@ -48,12 +76,10 @@ defmodule TwitterColor do
     access_token_secret: System.get_env("ACCESS_TOKEN_SECRET")
     )
 
-    # ExTwitter.search("cats", [count: 5]) |>
-    #  Enum.map(fn(tweet) -> tweet.text end) |>
-    #  Enum.join("\n-----\n") |>
-    #  IO.puts
+    ExTwitter.search("cats", [count: 50]) |>
+     Enum.map(fn(tweet) -> tweet.text end) |>
+     Enum.join("\n-----\n") |>
+     IO.puts
   end
-
-
 
 end
