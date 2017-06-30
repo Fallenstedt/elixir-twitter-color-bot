@@ -7,7 +7,7 @@ defmodule TwitterColor do
   """
 
   def main() do
-    setup()
+    # setup()
 
     create_random_string(24)
     |> hash_input
@@ -35,6 +35,8 @@ defmodule TwitterColor do
     %{ color1: color1, color2: color2, color3: color3} = color
     image = :egd.create(300, 300)
     fill1 = :egd.color(color1)
+    fill2 = :egd.color(color2)
+    fill3 = :egd.color(color3)
 
     Enum.each pixel_map, fn({start, stop}) ->
       :egd.filledRectangle(image, start, stop, fill1) #modifying existing image variable. It's weird.
