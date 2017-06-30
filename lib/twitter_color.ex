@@ -7,18 +7,45 @@ defmodule TwitterColor do
   """
 
   def main() do
-    # setup()
+    setup()
 
     create_random_string(24)
     |> hash_input
     |> pick_color
     |> create_grid
     |> build_pixel_map
-    |> IO.inspect()
+    |> draw_image
+    |> save_image
   end
 
   @doc """
-  Builds a 300x300 pixel map for three seperate colors.
+  Writes image to drive in images directory.
+  """
+
+  def save_image(image) do
+    File.write("hey.png", image)
+  end
+
+  @doc """
+    renders the image
+  """
+  def draw_image(%TwitterColor.Image{color: color, pixel_map: pixel_map} = image) do
+    IO.inspect image
+
+    %{ color1: color1, color2: color2, color3: color3} = color
+    image = :egd.create(300, 300)
+    fill1 = :egd.color(color1)
+
+    Enum.each pixel_map, fn({start, stop}) ->
+      :egd.filledRectangle(image, start, stop, fill1) #modifying existing image variable. It's weird.
+    end
+
+    :egd.render(image)
+  end
+
+
+  @doc """
+  Builds a 300x300 pixel map for three seperate colors from a grid.
   """
 
   def build_pixel_map(%TwitterColor.Image{ grid: grid } = image) do
