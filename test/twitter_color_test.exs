@@ -8,15 +8,11 @@ defmodule TwitterColorTest do
     assert string_length == 12
   end
 
-  test "pick_color three rgb colors are made from a crypto.hash value, and each color is a tuple of 3 numbers" do
-    image = TwitterColor.create_random_string(12)
-    |> TwitterColor.hash_input
-    |> TwitterColor.pick_color
+  test "pick_color produces a list with three tuples, with each tuple having a length of 3" do
+    struct = TwitterColor.CreateImage.pick_color
+    [ color1, color2, color3 ] = struct.color
 
-    colors = Map.values(image.color)
-    [ color1, color2, color3 ] = colors
-
-    assert length(colors) == 3
+    assert length(struct.color) == 3
     assert tuple_size(color1) == 3
     assert tuple_size(color2) == 3
     assert tuple_size(color3) == 3
