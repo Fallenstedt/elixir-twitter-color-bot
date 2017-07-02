@@ -72,8 +72,15 @@ defmodule TwitterColor do
   @doc """
   Takes an `Identicon.Image` struct and pattern matches first three values from `hex` list. Returns a new struct twith `hex:` and `color:` defined.
   """
-  def pick_color(%TwitterColor.Image{hex: [r, g, b | _tail ]} = image) do
-    %TwitterColor.Image{image | color: [{r, g, b}, {g, b, r}, {b, r, g}]}
+  def pick_color(image) do
+    color = Enum.map((0..2), fn(x)->
+      r = Enum.random(0..255)
+      g = Enum.random(0..255)
+      b = Enum.random(0..255)
+      {r, g, b}
+    end)
+
+    %TwitterColor.Image{image | color: color}
   end
 
   @doc """
