@@ -7,7 +7,7 @@ defmodule TwitterColor do
   """
 
   def main() do
-    setup()
+    # setup()
 
     create_random_string(24)
     |> hash_input
@@ -27,20 +27,19 @@ defmodule TwitterColor do
   end
 
   @doc """
-    renders the image
+    renders the image with a pixel_map and color.
   """
-  def draw_image(%TwitterColor.Image{color: color, pixel_map: pixel_map} = image) do
-    IO.inspect image
-
-    %{ color1: color1, color2: color2, color3: color3} = color
+  def draw_image(%TwitterColor.Image{color: color, pixel_map: pixel_map}) do
     image = :egd.create(300, 300)
-    fill1 = :egd.color(color1)
 
-    Enum.each pixel_map, fn({start, stop}) ->
-      :egd.filledRectangle(image, start, stop, fill1) #modifying existing image variable. It's weird.
-    end
+    Enum.zip(pixel_map, color)
+    |> Enum.each(fn({{start, stop}, fill}) ->
+      egd_fill = :egd.color(fill)
+      :egd.filledRectangle(image, start, stop, egd_fill)
+    end)
 
     :egd.render(image)
+
   end
 
 
@@ -74,7 +73,7 @@ defmodule TwitterColor do
   Takes an `Identicon.Image` struct and pattern matches first three values from `hex` list. Returns a new struct twith `hex:` and `color:` defined.
   """
   def pick_color(%TwitterColor.Image{hex: [r, g, b | _tail ]} = image) do
-    %TwitterColor.Image{image | color: %{:color1 => {r, g, b}, :color2 => {g, b, r}, :color3 => {b, r, g} }}
+    %TwitterColor.Image{image | color: [{r, g, b}, {g, b, r}, {b, r, g}]}
   end
 
   @doc """
