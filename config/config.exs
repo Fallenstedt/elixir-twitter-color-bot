@@ -28,6 +28,13 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+# Generate an image every hour on the 10 mark and posts it to twitter
+config :quantum, :your_app,
+  cron: [
+    # Every minute
+    "25 * * * *": {TwitterColor, :main}
+  ]
+
 config :extwitter, :oauth, [
    consumer_key: System.get_env("CONSUMER_KEY"),
    consumer_secret: System.get_env("CONSUMER_SECRET"),

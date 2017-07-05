@@ -3,19 +3,13 @@ defmodule TwitterColor.Tweet do
 
   def main do
     setup()
-    tweet_image_with_message("I made an image just for you")
+    tweet_image_with_message("Do these #colors work well together? I can't tell.")
   end
 
   def tweet_image_with_message(message) do
     image = File.read!("hey.png")
     ExTwitter.update_with_media(message, image)
-  end
-
-  def search_for_cats do
-    ExTwitter.search("cats", [count: 50]) |>
-    Enum.map(fn(tweet) -> tweet.text end) |>
-    Enum.join("\n-----\n") |>
-    IO.puts
+    IO.puts "Tweeting the message..."
   end
 
   def setup do

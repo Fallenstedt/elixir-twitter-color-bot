@@ -16,6 +16,7 @@ defmodule TwitterColor.CreateImage do
   """
 
   def save_image(image) do
+    IO.puts "Saving the image..."
     File.write("hey.png", image)
   end
 
