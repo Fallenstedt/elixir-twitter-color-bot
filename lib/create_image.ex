@@ -1,7 +1,11 @@
 defmodule TwitterColor.CreateImage do
 
-  @doc """
+  @moduledoc """
     Creates a 300x300 image with three random colored rectangles
+  """
+
+  @doc """
+    Generates an image
   """
   def main() do
     pick_color()
@@ -14,7 +18,6 @@ defmodule TwitterColor.CreateImage do
   @doc """
     Writes image to drive.
   """
-
   def save_image(image) do
     IO.puts "Saving the image..."
     File.write("hey.png", image)
@@ -40,7 +43,6 @@ defmodule TwitterColor.CreateImage do
   @doc """
     Builds a 300x300 pixel map for three seperate colors from a grid.
   """
-
   def build_pixel_map(%TwitterColor.Image{ grid: grid } = image) do
     pixel_map = Enum.map grid, fn({_code, index}) ->
       horizontal = rem(index, 3) * 100
@@ -63,8 +65,14 @@ defmodule TwitterColor.CreateImage do
     %TwitterColor.Image{ image | grid: grid}
   end
 
-  @doc """
-    Create three random colors as a list of three tuples
+  @doc ~S"""
+  Create three random r,g,b colors as a list of three tuples
+
+  ## Examples
+      iex> struct = TwitterColor.CreateImage.pick_color()
+      iex> struct.color
+      [{207, 127, 117}, {219, 121, 237}, {109, 101, 206}]
+
   """
   def pick_color() do
     color = Enum.map((0..2), fn(x)->
