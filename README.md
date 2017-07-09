@@ -23,6 +23,8 @@ export ACCESS_TOKEN_SECRET="This is the last key you need"
 * In terminal, navigate to the directory and run `iex -S mix`
 * Run `TwitterColor.main` and posts will automatically start.
 
+You can generate docs with `mix docs` and dropping the `doc/index.html` into your favorite browser.
+
 ## Configuration
 
 In `config.exs`, you can modify the `:quantum` job to post as frequently as you want.
