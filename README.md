@@ -3,7 +3,7 @@
 
 ![Example](examples/2.jpg)![Example](examples/3.jpg)![Example](examples/4.jpg)![Example](examples/5.jpg)
 
-An elixir bot that will consume a string, generate an image of random colors, and post it to twitter. You can see the bot in action [here](https://twitter.com/elixirColorBot)
+An elixir bot that will generate an image of random colors, and post it to twitter. You can see the bot in action [here](https://twitter.com/elixirColorBot)
 
 
 ## Development
