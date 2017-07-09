@@ -1,10 +1,17 @@
 # TwitterColor
+### Your friendly elixir color robot
 
-An elixir bot that will consume a string, generate an image of random colors, and post it to twitter.
+![Example](examples/2.jpg)![Example](examples/3.jpg)![Example](examples/4.jpg)![Example](examples/5.jpg)
 
-You need to set up your env. or check your secret gist...
+An elixir bot that will consume a string, generate an image of random colors, and post it to twitter. You can see the bot in action [here](https://twitter.com/elixirColorBot)
 
-Your `.env` should be in root and look like:
+
+## Development
+Want to start your own bot?
+
+1. Clone this repo
+1. Run `mix deps.get`
+1. Create a `.env` in root. It should contain your keys from Twitter and look like this:
 
 ```
 export CONSUMER_KEY="Key Goes here"
@@ -13,18 +20,9 @@ export ACCESS_TOKEN="And Another key goes here"
 export ACCESS_TOKEN_SECRET="This is the last key you need"
 ```
 
+1. In terminal, navigate to the directory and run `iex -S mix`
+1. Run `TwitterColor.main` and posts will automatically start.
 
-## Installation
+## Configuration
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `twitter_color` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [{:twitter_color, "~> 0.1.0"}]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/twitter_color](https://hexdocs.pm/twitter_color).
+In `config.exs`, you can modify the `:quantum` job to post as frequently as you want.

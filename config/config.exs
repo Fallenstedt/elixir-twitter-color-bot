@@ -31,7 +31,7 @@ use Mix.Config
 # Generate an image every hour on the 10 mark and posts it to twitter
 config :quantum, :your_app,
   cron: [
-    # Every minute
+    # Every hour at the 25 mark.
     "25 * * * *": {TwitterColor, :main}
   ]
 
