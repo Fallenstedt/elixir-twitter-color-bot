@@ -84,23 +84,4 @@ defmodule TwitterColor.CreateImage do
 
     %TwitterColor.Image{color: color}
   end
-
-  @doc """
-    Creates a random string from a specified length. Returns struct.
-  """
-  def create_random_string(length) do
-    string = :crypto.strong_rand_bytes(length) |> Base.url_encode64 |> binary_part(0, length)
-    %TwitterColor.Image{string: string}
-  end
-
-  @doc """
-    Takes a string input and returns a `Identicon.Image` struct. Hashes an input string and binds it to `:hex` property.
-  """
-  def hash_input(%TwitterColor.Image{string: string} = image) do
-    hex = :crypto.hash(:md5, string)
-    |> :binary.bin_to_list
-
-    %TwitterColor.Image{ image | hex: hex}
-  end
-
 end
