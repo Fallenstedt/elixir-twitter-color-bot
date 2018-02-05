@@ -30,6 +30,7 @@ defmodule TwitterColor.Mixfile do
   defp deps do
     [{:ex_doc, "~> 0.14"},
     {:extwitter, "~> 0.8"},
-    {:quantum, ">= 1.9.2"}]
+    {:quantum, ">= 1.9.2"},
+    {:egd, github: "erlang/egd"}]
   end
 end

@@ -32,7 +32,7 @@ use Mix.Config
 config :quantum, :your_app,
   cron: [
     # Every hour at the 25 mark.
-    "25 * * * *": {TwitterColor, :main}
+    "21 * * * *": {TwitterColor, :main}
   ]
 
 config :extwitter, :oauth, [
