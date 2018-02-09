@@ -34,9 +34,7 @@ defmodule TwitterColor.CreateImage do
       egd_fill = :egd.color(fill)
       :egd.filledRectangle(image, start, stop, egd_fill)
     end)
-
     :egd.render(image)
-
   end
 
 
