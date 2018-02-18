@@ -34,4 +34,13 @@ defmodule TwitterColorTest do
     assert third == {{200,0}, {300, 300}}
     assert length(img.pixel_map) == 3
   end 
+
+  test "draw_image returns a binary of image data" do
+    img = TwitterColor.CreateImage.pick_color
+    |> create_grid
+    |> build_pixel_map
+    |> draw_image
+    
+    assert is_binary(img)
+  end
 end
