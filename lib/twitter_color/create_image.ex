@@ -63,10 +63,11 @@ defmodule TwitterColor.CreateImage do
     %TwitterColor.Image{ image | grid: grid}
   end
 
-  @doc ~S"""
+  @doc """
   Create three random r,g,b colors as a list of three tuples
 
   ## Examples
+     
       iex> struct = TwitterColor.CreateImage.pick_color()
       iex> struct.color
       [{207, 127, 117}, {219, 121, 237}, {109, 101, 206}]
