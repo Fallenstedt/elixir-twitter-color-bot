@@ -26,8 +26,7 @@ defmodule TwitterColorTest do
     img = TwitterColor.CreateImage.pick_color
     |> create_grid
     |> build_pixel_map
-    IO.inspect img.pixel_map
-    
+
     [first, second, third] = img.pixel_map
     assert first == {{0,0}, {100, 300}}
     assert second == {{100,0}, {200, 300}}
@@ -42,5 +41,11 @@ defmodule TwitterColorTest do
     |> draw_image
     
     assert is_binary(img)
+  end
+
+  test "save_image writes an image to disk" do
+    TwitterColor.CreateImage.main
+
+    assert File.read!("hey.png")
   end
 end
