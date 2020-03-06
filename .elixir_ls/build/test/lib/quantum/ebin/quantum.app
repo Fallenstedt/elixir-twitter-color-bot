@@ -1,0 +1,10 @@
+{application,quantum,
+             [{applications,[kernel,stdlib,elixir,calendar,crontab]},
+              {description,"Cron-like job scheduler for Elixir."},
+              {modules,['Elixir.Quantum','Elixir.Quantum.Application',
+                        'Elixir.Quantum.Config','Elixir.Quantum.Executor',
+                        'Elixir.Quantum.Job','Elixir.Quantum.Normalizer',
+                        'Elixir.Quantum.Supervisor','Elixir.Quantum.Timer']},
+              {registered,[]},
+              {vsn,"1.9.2"},
+              {mod,{'Elixir.Quantum.Application',[]}}]}.

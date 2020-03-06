@@ -10,7 +10,7 @@ defmodule TwitterColor.Tweet do
   """
   def main do
     setup()
-    tweet_image_with_message("Do these #colors work well together? I can't tell.")
+    tweet_image_with_message("")
   end
 
   @doc """
@@ -19,7 +19,7 @@ defmodule TwitterColor.Tweet do
   def tweet_image_with_message(message) do
     image = File.read!("hey.png")
     ExTwitter.update_with_media(message, image)
-    IO.puts "Tweeting the message..."
+    IO.puts("Tweeting the message...")
   end
 
   @doc """
@@ -27,10 +27,10 @@ defmodule TwitterColor.Tweet do
   """
   def setup do
     ExTwitter.configure(
-    consumer_key: System.get_env("CONSUMER_KEY"),
-    consumer_secret: System.get_env("CONSUMER_SECRET"),
-    access_token: System.get_env("ACCESS_TOKEN"),
-    access_token_secret: System.get_env("ACCESS_TOKEN_SECRET")
+      consumer_key: System.get_env("CONSUMER_KEY"),
+      consumer_secret: System.get_env("CONSUMER_SECRET"),
+      access_token: System.get_env("ACCESS_TOKEN"),
+      access_token_secret: System.get_env("ACCESS_TOKEN_SECRET")
     )
   end
 end

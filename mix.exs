@@ -2,12 +2,14 @@ defmodule TwitterColor.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :twitter_color,
-     version: "0.1.0",
-     elixir: "~> 1.4",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps()]
+    [
+      app: :twitter_color,
+      version: "0.1.0",
+      elixir: "~> 1.4",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      deps: deps()
+    ]
   end
 
   # Configuration for the OTP application
@@ -28,9 +30,12 @@ defmodule TwitterColor.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:ex_doc, "~> 0.14"},
-    {:extwitter, "~> 0.8"},
-    {:quantum, ">= 1.9.2"},
-    {:egd, github: "erlang/egd"}]
+    [
+      {:ex_doc, "~> 0.14"},
+      {:oauther, "~> 1.1"},
+      {:extwitter, "~> 0.8"},
+      {:quantum, ">= 2.4.0"},
+      {:egd, github: "erlang/egd"}
+    ]
   end
 end

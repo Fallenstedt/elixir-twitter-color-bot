@@ -1,0 +1,10 @@
+{application,twitter_color,
+             [{applications,[kernel,stdlib,elixir,logger,extwitter,quantum,
+                             egd,ex_doc,oauther]},
+              {description,"twitter_color"},
+              {modules,['Elixir.TwitterColor',
+                        'Elixir.TwitterColor.CreateImage',
+                        'Elixir.TwitterColor.Image',
+                        'Elixir.TwitterColor.Tweet']},
+              {registered,[]},
+              {vsn,"0.1.0"}]}.
